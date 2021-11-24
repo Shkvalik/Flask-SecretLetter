@@ -6,6 +6,20 @@ body {
     font-family: 'Comforter Brush', cursive;
 }
 
+.main-letter {
+  width: 800px;
+  height: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 170px;
+  box-shadow: 6px 6px 20px rgba(0, 0, 0, 0.1);
+  background: url("img/letter-background.jpg");
+  border: 10px solid #efcfd8;
+  border-radius: 25px;
+  position: relative;
+  display: block;
+}
+
 @keyframes gradient {
   0% {
     background-position: 0 50%;
