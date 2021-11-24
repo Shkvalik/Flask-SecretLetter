@@ -1,0 +1,18 @@
+body {
+  background: linear-gradient(-45deg, rgba(255, 189, 199, 234), rgba(255, 216, 221, 235), rgba(255, 235, 237, 236));
+  background-size: 400% 400%;
+  animation: gradient 10s ease infinite;
+  min-width: 1200px;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}
