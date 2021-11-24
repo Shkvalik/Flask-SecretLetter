@@ -9,9 +9,16 @@
 {% endblock %}
 
 {% block body %}
-    <body>
-    {# Main-letter #}
+    <form action="#" method="post">
+    {#  Main letter  #}
     <div class="main-letter">
+        {#    Content of the letter    #}
+        <p class="from">From:</p>
+        <input class="author" name="author" placeholder="Enter text..." required>
+        <input class="text" name="text" placeholder="Enter text..." required>
+        <p class="to">To:</p>
+        <input class="recipient" name="recipient" placeholder="Enter text..." required>
     </div>
-    </body>
+    <button class="send-message" type="submit">💌</button>
+</form>
 {% endblock %}
