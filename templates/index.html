@@ -1,11 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Hello World</title>
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Create Letter</title>
+{% endblock %}
+
+{% block style %}
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-</head>
-<body>
-    <h1>hello world</h1>
-</body>
-</html>
+{% endblock %}
+
+{% block body %}
+    <body>
+    <div class="chat-block">
+    </div>
+    </body>
+{% endblock %}
