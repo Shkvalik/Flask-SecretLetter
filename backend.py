@@ -2,6 +2,8 @@ from flask import Flask, request, render_template, redirect
 from flask_sqlalchemy import SQLAlchemy
 from hashlib import sha256
 
+from sqlalchemy import desc
+
 app = Flask(__name__)
 db = SQLAlchemy(app)
 
@@ -22,6 +24,12 @@ def add_letter_to_database(letter_id, author, text, recipient):
         db.session.commit()
     except:
         return redirect('index.html')
+
+
+# method getting number of letter in database
+def get_letter_id_from_db():
+    last_id = Letters.query.order_by(desc(Letters.id)).first().id
+    return int(last_id) + 1
 
 
 # method of creating a unique ID by encryption method
