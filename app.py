@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request
 from secret import secretkey
 from flask_sqlalchemy import SQLAlchemy
-from backend import create_unique_id, add_letter_to_database, get_letter_id_from_db
+from backend import create_unique_id, add_letter_to_database, get_letter_id_from_db, get_letter_by_unique_letter_id
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
@@ -25,7 +25,8 @@ def create_letter():
 # Letter page
 @app.route('/letter/<string:letter_id>')
 def letter(letter_id):
-    return render_template('letter.html', letter_id=letter_id)
+    letter_content = get_letter_by_unique_letter_id(letter_id)
+    return render_template('letter.html', content=letter_content)
 
 
 if __name__ == '__main__':
