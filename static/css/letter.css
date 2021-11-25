@@ -1,0 +1,146 @@
+body {
+    background: linear-gradient(-45deg, rgba(255, 189, 199, 234), rgba(255, 216, 221, 235), rgba(255, 235, 237, 236));
+    background-size: 400% 400%;
+    animation: gradient 10s ease infinite;
+    min-width: 1200px;
+    font-family: 'Comforter Brush', cursive;
+}
+
+.letter{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 19%;
+    animation: scale 0.7s ease infinite;
+    position: relative;
+}
+
+.letter:hover{
+    animation: scale 0.4s ease infinite;
+}
+
+.modal {
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+    transition: .3s;
+    top: -1000px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    overflow-y: scroll;
+}
+
+.modal_active {
+    position: fixed;
+    top: 0;
+    visibility: visible;
+    opacity: 1;
+    transition: .3s;
+}
+
+.modal__content {
+    width: 100%;
+    max-width: 500px;
+    padding: 100px;
+    background: url("img/letter-background.jpg");
+    border-radius: 3px;
+    top: 30%;
+    position: relative;
+    box-shadow: 0 5px 15px black;
+    word-wrap: break-word;
+
+}
+
+.recipient {
+    position: relative;
+    bottom: 120px;
+    right: 65px;
+}
+
+.text {
+    font-size: 25px;
+    position: relative;
+    bottom: 130px;
+}
+
+.author {
+    position: relative;
+    top: 120px;
+    left: 510px;
+}
+
+.modal__close-button {
+    background: #ff0000;
+    height: 30px;
+    width: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+    background: none;
+    cursor: pointer;
+    transition: .3s;
+    outline: none;
+}
+
+.modal__close-button:hover {
+    transition: .3s;
+    transform: rotate(180deg);
+}
+
+.hidden {
+    overflow: hidden;
+}
+
+@keyframes scale{
+    0% {
+        -webkit-transform: scale(1);
+        -ms-transform: scale(1);
+        transform: scale(1);
+    }
+
+    25% {
+        -webkit-transform: scale(1.05);
+        -ms-transform: scale(1.05);
+        transform: scale(1.05);
+    }
+
+    50% {
+        -webkit-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+        transform: scale(1.1);
+    }
+
+    75% {
+        -webkit-transform: scale(1.05);
+        -ms-transform: scale(1.05);
+        transform: scale(1.05);
+    }
+
+    100% {
+        -webkit-transform: scale(1);
+        -ms-transform: scale(1);
+        transform: scale(1);
+    }
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0 50%;
+    }
+}
