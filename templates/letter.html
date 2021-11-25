@@ -11,11 +11,11 @@
 {% block body %}
     <body>
     <img class="letter" src="{{ url_for('static', filename='css/img/Secretletter.png') }}">
-    <!-- Модальное окно -->
+    <!-- modal window -->
     <div class="modal" id="modal-1">
         <div class="modal__content">
             <button class="modal__close-button"><img src="{{ url_for('static', filename='css/img/close.png') }}" alt=""></button>
-            <!-- Контент модального окна -->
+            <!-- Content modal window -->
             <h1 class="recipient">{{ content.recipient}}</h1>
             <p class="text">{{ content.text }}</p>
             <h1 class="author">{{ content.author }}</h1>
@@ -23,13 +23,13 @@
     </div>
     <script type="text/javascript">
         document.addEventListener('DOMContentLoaded', () => {
-        // Кнопка по которой происходит клик
+        // button for click
         let callBackButton = document.getElementsByClassName('letter')[0];
 
-        // Модальное окно, которое необходимо открыть
+        // modal window which need to open
         let modal1 = document.getElementById('modal-1');
 
-        // Кнопка "закрыть" внутри модального окна
+        // button "close" is inside the window
         let closeButton = modal1.getElementsByClassName('modal__close-button')[0];
 
         callBackButton.onclick = function () {
