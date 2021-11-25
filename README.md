@@ -1,7 +1,9 @@
 # Flask-SecretLetter
 
 #### Executable:
-`flask run`
+```bash
+flask run
+```
 
 #### Stack:
 * Python 3.8+
@@ -13,7 +15,9 @@
 `requirements.txt`
 
 Installation of requirements:  
-`pip3 install -r requirements.txt`
+```bash
+pip3 install -r requirements.txt
+```
 
 #### Developers:
 Shkvalik
