@@ -16,6 +16,11 @@ class Letters(db.Model):
     recipient = db.Column(db.String(16), nullable=False)
 
 
+# method for correct display letter content
+def __repr__(self):
+    return self.author, self.text, self.recipient
+
+
 # method adding data to database
 def add_letter_to_database(letter_id, author, text, recipient):
     data = Letters(letter_id=letter_id, author=author, text=text, recipient=recipient)
@@ -30,6 +35,19 @@ def add_letter_to_database(letter_id, author, text, recipient):
 def get_letter_id_from_db():
     last_id = Letters.query.order_by(desc(Letters.id)).first().id
     return int(last_id) + 1
+
+
+# method get content letter by unique letter id (6b86b273...) and than return it in dictionary format
+def get_letter_by_unique_letter_id(letter_id):
+    letter_content = Letters.query.filter_by(letter_id=letter_id).first()
+    author = letter_content.author
+    text = letter_content.text
+    recipient = letter_content.recipient
+    return {
+            'author': author,
+            'text': text,
+            'recipient': recipient
+            }
 
 
 # method of creating a unique ID by encryption method
