@@ -1,5 +1,6 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, redirect
 from flask_sqlalchemy import SQLAlchemy
+from hashlib import sha256
 
 app = Flask(__name__)
 db = SQLAlchemy(app)
@@ -11,3 +12,20 @@ class Letters(db.Model):
     author = db.Column(db.String(16), nullable=False)
     text = db.Column(db.Text, nullable=False)
     recipient = db.Column(db.String(16), nullable=False)
+
+
+# method adding data to database
+def add_letter_to_database(letter_id, author, text, recipient):
+    data = Letters(letter_id=letter_id, author=author, text=text, recipient=recipient)
+    try:
+        db.session.add(data)
+        db.session.commit()
+    except:
+        return redirect('index.html')
+
+
+# method of creating a unique ID by encryption method
+def create_unique_id(letter_id):
+    return sha256(letter_id.encode('utf-8')).hexdigest()
+
+
