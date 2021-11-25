@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>SecretLetter</title>
+{% endblock %}
+
+{% block style %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/letter.css') }}">
+{% endblock %}
+
+{% block body %}
+    <body>
+        <h1>{{ letter_id }}</h1>
+    </body>
+{% endblock %}
