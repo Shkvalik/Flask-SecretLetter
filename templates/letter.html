@@ -10,6 +10,44 @@
 
 {% block body %}
     <body>
-        <h1>{{ letter_id }}</h1>
-    </body>
+    <img class="letter" src="{{ url_for('static', filename='css/img/Secretletter.png') }}">
+    <!-- Модальное окно -->
+    <div class="modal" id="modal-1">
+        <div class="modal__content">
+            <button class="modal__close-button"><img src="{{ url_for('static', filename='css/img/close.png') }}" alt=""></button>
+            <!-- Контент модального окна -->
+            <h1 class="recipient">{{ content.recipient}}</h1>
+            <p class="text">{{ content.text }}</p>
+            <h1 class="author">{{ content.author }}</h1>
+        </div>
+    </div>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', () => {
+        // Кнопка по которой происходит клик
+        let callBackButton = document.getElementsByClassName('letter')[0];
+
+        // Модальное окно, которое необходимо открыть
+        let modal1 = document.getElementById('modal-1');
+
+        // Кнопка "закрыть" внутри модального окна
+        let closeButton = modal1.getElementsByClassName('modal__close-button')[0];
+
+        callBackButton.onclick = function () {
+            modal1.classList.add('modal_active');
+        }
+
+        closeButton.onclick = function () {
+            modal1.classList.remove('modal_active');
+        }
+
+        modal1.onmousedown = function (e) {
+            let target = e.target;
+            let modalContent = modal1.getElementsByClassName('modal__content')[0];
+            if (e.target.closest('.' + modalContent.className) === null) {
+                this.classList.remove('modal_active');
+            }
+        };
+    });
+    </script>
+</body>
 {% endblock %}
