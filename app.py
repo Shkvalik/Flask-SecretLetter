@@ -1,10 +1,24 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
+from secret import secretkey
+from flask_sqlalchemy import SQLAlchemy
+from backend import create_unique_id, add_letter_to_database
 
 app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
+app.config['SECRET_KEY'] = secretkey
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
+db = SQLAlchemy(app)
 
 
-@app.route('/')
-def hello_world():  # put application's code here
+# main page
+@app.route('/', methods=["POST", "GET"])
+def create_letter():
+    if request.method == "POST":
+        letter_id = create_unique_id(str(1))  # Create unique id like e7f6c011776e8... basic on number id in database
+        author = request.form.get('author')
+        text = request.form.get('text')
+        recipient = request.form.get('recipient')
+        add_letter_to_database(letter_id, author, text, recipient)  # Add letter with all content in db
     return render_template('index.html')
 
 
